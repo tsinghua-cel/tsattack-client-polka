@@ -1,0 +1,23 @@
+[package]
+name = "tsattack-client"
+version = "0.0.1"
+edition = "2024"
+authors = ["xueqian1991@gmail.com"]
+description = "A client package for AttackService"
+license = "MIT" # Specify your license
+repository = "https://github.com/tsinghua-cel/polka-attack-server"
+homepage = "https://github.com/tsinghua-cel/polka-attack-server"
+documentation = "https://docs.rs/attack-client"
+readme = "README.md"
+keywords = ["grpc", "tonic", "client"]
+categories = ["network-programming", "api-bindings"]
+
+
+[dependencies]
+tonic = "0.9"
+prost = "0.11"
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+
+[build-dependencies]
+tonic-build = "0.9"

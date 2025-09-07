@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package attack;
+
+service AttackService {
+  rpc ReportValidatorInfo (ReportValidatorInfoRequest) returns (ReportValidatorInfoResponse);
+  rpc DelayForBlock (DelayForBlockRequest) returns (DelayForBlockResponse);
+  rpc ReportDuty (ReportDutyRequest) returns (ReportDutyResponse);
+  rpc ModifyBlock (ModifyBlockRequest) returns (ModifyBlockResponse);
+}
+
+message ValidatorInfo {
+  int32 idx = 1;
+  string address = 2;
+}
+
+message ReportValidatorInfoRequest {
+  ValidatorInfo info = 1;
+}
+
+message ReportValidatorInfoResponse {
+  string message = 1;
+}
+
+message BlockInfo {
+  int32 number = 1;
+  bytes block_hash = 2;
+  int64 timestamp = 3;
+}
+
+message DelayForBlockRequest {
+  BlockInfo block_info = 1;
+}
+
+message DelayForBlockResponse {
+  string message = 1;
+}
+
+message DutyInfo {
+  string validator = 1;
+  int32 slot = 2;
+  int64 time = 3;
+  int32 priority = 4;
+}
+
+message ReportDutyRequest {
+  repeated DutyInfo duties = 1;
+}
+
+message ReportDutyResponse {
+  string message = 1;
+}
+
+message BlockData {
+  bytes data = 1;
+}
+
+message ModifyBlockRequest {
+  BlockData block_data = 1;
+}
+
+message ModifyBlockResponse {
+  bool success = 1;
+}
